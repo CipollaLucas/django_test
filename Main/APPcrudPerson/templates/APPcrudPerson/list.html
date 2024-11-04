@@ -1,0 +1,36 @@
+{% extends 'APPcrudPerson/index.html' %}
+{% block content %}
+{% comment %} <h1> Lista </h1>
+{{personas}} {% endcomment %}
+
+<table class="table table-hover table-bordered my-3" aria-describedby="titulo">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">DNI</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+<!-- Recorro persona en personas-->
+{% for persona in personas  %}
+    <tbody>
+        <tr>
+            <td>{{persona.numero_documento}}</td>
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.apellido}}</td>
+            <!-- Opciones para el manejo de cada registro.-->
+            <td>
+                <a href="edita.html" class="btn btn-warning btn-sm me-2">Editar</a>
+
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#eliminaModal" data-bs-id="1">Eliminar</button>
+            </td>
+        </tr>
+
+    </tbody>
+
+{% endfor %}
+    
+</table>
+{% endblock content %}

@@ -11,8 +11,8 @@ class Persona(models.Model):
         ('DNI', 'DNI'),
         ('Pasaporte', 'Pasaporte'),
     ]
-    tipo_documento = models.CharField(max_length=10, choices=TIPO_DOCUMENTO, default='DNI', unique=True)
-    numero_documento = models.IntegerField(null=True, blank=True)
+    tipo_documento = models.CharField(max_length=10, choices=TIPO_DOCUMENTO, default='DNI')
+    numero_documento = models.IntegerField(unique=True)
 
     def __str__(self):
-        return f'{self.apellido}, {self.nombre}'
+        return f'{self.apellido}, {self.nombre}, DNI: {self.numero_documento}'
