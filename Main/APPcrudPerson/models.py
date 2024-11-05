@@ -5,7 +5,7 @@ class Persona(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     edad = models.IntegerField()
-    Hobbie = models.CharField(max_length=100)
+    hobbie = models.CharField(max_length=100)
 
     TIPO_DOCUMENTO = [
         ('DNI', 'DNI'),

@@ -6,12 +6,14 @@ from django.contrib import admin
 from django.urls import path
 
 # Include the CRUD URLs from views.
-from . import views
+from .views import ListaPersona, CreatePersonaView, PersonaUpdateView, index, IndexView, persona_create, persona_update
 
 urlpatterns = [
-    path('home/', views.index, name='index'),
-    path('create/', views.persona_create, name='persona_create'),
-    path('list/', views.persona_list, name='persona_list'),
-    path('update/<int:id>', views.persona_update, name='persona_update'),
-    path('delete/<int:id>', views.persona_delete, name='persona_delete'),
+    path('home/', IndexView.as_view(), name='index'),
+    path('create/', CreatePersonaView.as_view(), name='create'),
+    #path('create/', persona_create, name='create'),
+    path('list/', ListaPersona.as_view(), name='list'),
+    #path('update/<int:id>', persona_update, name='update'),
+    path('update/<int:pk>', PersonaUpdateView.as_view(), name='update'),
+    #path('delete/<int:id>', persona_delete, name='persona_delete'),
 ]
