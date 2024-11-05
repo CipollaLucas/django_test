@@ -136,7 +136,7 @@ def persona_delete(request, id):
 
 class PersonaDeleteView(DeleteView):
     model = Persona
-    template_name = "APPcrudPerson/delete.html"
+    #template_name = "APPcrudPerson/delete.html"
     success_url = reverse_lazy('APPcrudPerson:list')
     
     def post(self, request, pk, *args, **kwargs):

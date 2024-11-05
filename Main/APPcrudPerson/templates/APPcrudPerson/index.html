@@ -20,9 +20,9 @@
         <div class="container">
             <h3 class="my-3" id="titulo">Personas</h3>
 
-            <a href="nuevo.html" class="btn btn-success">Agregar</a>
-            <a href="" class="btn btn-primary">Lista de personas</a>
-            <a href="" class="btn btn-primary">Home</a>
+            <a href="{% url 'create' %}" class="btn btn-success">Agregar</a>
+            <a href="{% url 'list' %}" class="btn btn-primary">Lista de personas</a>
+            <a href="{% url 'index' %}" class="btn btn-primary">Home</a>
 
             <!-- Acá debajo del boton agregar, empieza a extender los sigyuientes templates.-->
 {% block content %}
@@ -51,7 +51,9 @@
                     <form id="form-elimina" action="" method="post">
                         <input type="hidden" name="_method" value="delete">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <button type="button" class="btn btn-danger">Eliminar
+                            <a href="#" class="btn btn-primary">Home</a>
+                        </button>
                     </form>
                 </div>
             </div>
