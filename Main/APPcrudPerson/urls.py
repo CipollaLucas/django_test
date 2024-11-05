@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.urls import path
 
 # Include the CRUD URLs from views.
-from .views import ListaPersona, CreatePersonaView, PersonaUpdateView, index, IndexView, persona_create, persona_update
+from .views import IndexView, ListaPersona, CreatePersonaView, PersonaUpdateView, PersonaDeleteView, index, persona_create, persona_update
 
 urlpatterns = [
     path('home/', IndexView.as_view(), name='index'),
@@ -16,4 +16,5 @@ urlpatterns = [
     #path('update/<int:id>', persona_update, name='update'),
     path('update/<int:pk>', PersonaUpdateView.as_view(), name='update'),
     #path('delete/<int:id>', persona_delete, name='persona_delete'),
+    path('delete/<int:pk>', PersonaDeleteView.as_view(), name='delete'),
 ]

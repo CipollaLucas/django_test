@@ -1,0 +1,7 @@
+{% extends 'APPcrudPerson/index.html' %}
+{% block content %}
+<form method="post">{% csrf_token %}
+  <p> <strong> Desea eliminar el registro {{ object }}?? </strong></p>
+    <input type="submit" value="Confirmar">
+</form>
+{% endblock content %}

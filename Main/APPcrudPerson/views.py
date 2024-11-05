@@ -17,7 +17,7 @@ from django.http import Http404, HttpRequest, HttpResponse, HttpResponseNotFound
 from django.urls import reverse_lazy
 from .models import Persona # Importamos el modelo persona para poder trabajar con los metodos HTTP.
 from django.views.decorators.csrf import csrf_exempt #Agregamos esta línea para decirle que no necesitamos el token de seguridad ya que es local.
-from django.views.generic import View, ListView, TemplateView, UpdateView
+from django.views.generic import View, ListView, TemplateView, UpdateView, DeleteView
 from django.views.generic.edit import CreateView
 from .forms import PersonaForm
 
@@ -70,8 +70,8 @@ class CreatePersonaView(CreateView):
     template_name = 'APPcrudPerson/create.html'
     #Retornamos un mensaje cuando se crea una persona.
     print("Persona creada exitosamente...")
-    success_url = reverse_lazy('APPcrudPerson: index')
-    
+    success_url = reverse_lazy('list')
+
     # #Validamos el formulario
     # def form_valid(self, form):
     #     print("Validando formulario...")
@@ -132,4 +132,17 @@ def persona_delete(request, id):
             return HttpResponse(status=200, content="Persona eliminada exitosamente.")
     except:
         return HttpResponse(status=404, content="La persona con el id no existe.-")
+
+
+class PersonaDeleteView(DeleteView):
+    model = Persona
+    template_name = "APPcrudPerson/delete.html"
+    success_url = reverse_lazy('APPcrudPerson:list')
+    
+    def post(self, request, pk, *args, **kwargs):
+        object = Persona.objects.get(id=pk)
+        object.delete()
+        object.save()
+        return HttpResponse(status=200, content="Persona eliminada exitosamente.")
+    
 
